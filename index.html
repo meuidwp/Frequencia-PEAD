@@ -27,10 +27,12 @@
           <input type="number" id="qtd" min="1" max="12" value="1">
         </label>
         <label>Nome completo (opcional)
-          <input type="text" id="nome" autocomplete="name">
+          <input type="text" id="nome" list="lista-nomes" autocomplete="off" placeholder="Digite ou escolha">
+          <datalist id="lista-nomes"></datalist>
         </label>
         <label>Local de trabalho (opcional)
-          <input type="text" id="local">
+          <input type="text" id="local" list="lista-locais" autocomplete="off" placeholder="Digite ou escolha">
+          <datalist id="lista-locais"></datalist>
         </label>
         <label class="check">
           <input type="checkbox" id="pf-nacionais">

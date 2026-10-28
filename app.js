@@ -19,6 +19,21 @@
     [12, 25, "Natal"]
   ];
 
+  // Locais de trabalho e seus nomes automáticos.
+  // Para incluir outro local/nome, basta acrescentar aqui.
+  // Com 1 nome, ele é preenchido sozinho ao escolher o local; com vários, aparecem como sugestão.
+  const LOCAIS = [
+    { local: "NAAS Maresias", nomes: ["Esthela Leonardo de Siqueira"] },
+    { local: "CRAS Boiçucanga", nomes: [
+      "Analece Neves do Nascimento",
+      "Ethiene Miranda dos Santos",
+      "Marie Souza dos Passos e Silva"
+    ] }
+  ];
+  const TODOS_NOMES = LOCAIS.flatMap((l) => l.nomes);
+  const norm = (s) => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+  const achaLocal = (v) => LOCAIS.find((l) => norm(l.local) === norm(v));
+
   const $ = (id) => document.getElementById(id);
   const pad = (n) => String(n).padStart(2, "0");
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -173,6 +188,20 @@
     save(LS_FORM, form);
   }
 
+  // Atualiza as sugestões de nome conforme o local; "auto" preenche o nome quando possível.
+  function atualizarSugestoes(auto) {
+    const l = achaLocal($("local").value);
+    const nomes = l ? l.nomes : TODOS_NOMES;
+    $("lista-nomes").innerHTML = nomes.map((n) => `<option value="${esc(n)}">`).join("");
+    if (auto && l) {
+      const atual = $("nome").value.trim();
+      if (!atual || TODOS_NOMES.includes(atual)) {
+        if (l.nomes.length === 1) $("nome").value = l.nomes[0];
+        else if (!l.nomes.includes(atual)) $("nome").value = "";
+      }
+    }
+  }
+
   function iniciar() {
     const hoje = new Date();
     $("mes").value = `${hoje.getFullYear()}-${pad(hoje.getMonth() + 1)}`;
@@ -180,6 +209,16 @@
     $("local").value = form.local || "";
     $("qtd").value = form.qtd || 1;
     $("pf-nacionais").checked = !!form.pfNacionais;
+
+    $("lista-locais").innerHTML = LOCAIS.map((l) => `<option value="${esc(l.local)}">`).join("");
+    atualizarSugestoes(false);
+    // Registrado antes do salvarForm/render para o nome já entrar na folha
+    $("local").addEventListener("input", () => atualizarSugestoes(true));
+    $("local").addEventListener("change", () => {
+      const l = achaLocal($("local").value);
+      if (l) $("local").value = l.local;   // padroniza a grafia
+      atualizarSugestoes(true); salvarForm(); render();
+    });
 
     ["mes", "qtd", "nome", "local", "pf-nacionais"].forEach((id) =>
       $(id).addEventListener("input", () => { salvarForm(); render(); })
