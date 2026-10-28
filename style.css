@@ -52,11 +52,11 @@ th { font-size: 1.05em; }
 .reg td.c { text-align: center; white-space: nowrap; }
 .reg td.blk { background: #a6a6a6; text-align: center; font-weight: bold; }
 
-.ass { display: flex; justify-content: space-between; margin: 26px 8px 4px; text-align: center; }
+.ass { display: flex; justify-content: space-between; margin: 70px 8px 6px; text-align: center; }
 .ass div { width: 38%; border-top: 1px solid #000; padding-top: 2px; }
 
 /* ---------- Impressão ---------- */
-@page { size: A4 portrait; margin: 10mm; }
+@page { size: A4 portrait; margin: 8mm 10mm; }
 @media print {
   body { background: #fff; }
   .no-print { display: none !important; }
@@ -64,8 +64,8 @@ th { font-size: 1.05em; }
   .folhas { display: block; }
   .sheet { max-width: none; width: 190mm; padding: 0; box-shadow: none; font-size: 10pt; break-after: page; page-break-after: always; }
   .sheet:last-child { break-after: auto; page-break-after: auto; }
-  td, th { height: 5.6mm; }
+  td, th { height: 5.3mm; }
   .info td, .info th { height: 6mm; }
-  .ass { margin-top: 9mm; }
+  .ass { margin-top: 26mm; margin-bottom: 2mm; }
   .reg td.blk, .cab-img, .rod { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

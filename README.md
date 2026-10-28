@@ -42,5 +42,5 @@ Para trocar, substitua os arquivos mantendo os mesmos nomes.
 
 ## Atualizações
 
-Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v2` → `v3`)
+Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v3` → `v4`)
 para forçar a atualização nos aparelhos já instalados.
