@@ -37,7 +37,7 @@ O botão "Copiar lista para holidays.json" monta esse JSON para você.
 
 ## Locais de trabalho e nomes automáticos
 
-Os campos "Nome completo" e "Local de trabalho" aceitam digitação livre e mostram sugestões.
+Os campos "Nome completo" e "Local de trabalho" aceitam digitação livre e mostram sugestões (a lista completa aparece sempre que você toca no campo, mesmo já preenchido).
 Ao escolher um local com um único nome (ex.: NAAS Maresias), o nome é preenchido sozinho;
 com vários nomes (ex.: CRAS Boiçucanga), eles aparecem como sugestão no campo Nome.
 Para incluir novos locais/nomes, edite a constante `LOCAIS` no início do `app.js`.
@@ -49,5 +49,5 @@ Para trocar, substitua os arquivos mantendo os mesmos nomes.
 
 ## Atualizações
 
-Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v4` → `v5`)
+Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v5` → `v6`)
 para forçar a atualização nos aparelhos já instalados.

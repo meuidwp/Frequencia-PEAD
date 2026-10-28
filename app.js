@@ -27,7 +27,7 @@
     { local: "CRAS Boiçucanga", nomes: [
       "Analece Neves do Nascimento",
       "Ethiene Miranda dos Santos",
-      "Marie Souza dos Passos e Silva"
+      "Marie Souza Passos e Silva"
     ] }
   ];
   const TODOS_NOMES = LOCAIS.flatMap((l) => l.nomes);
@@ -202,6 +202,26 @@
     }
   }
 
+  // Ao focar o campo, esvazia temporariamente para a lista completa aparecer
+  // (o valor antigo fica como dica e volta se nada for escolhido/digitado).
+  function listaSempreVisivel(el) {
+    const dica = el.placeholder;
+    let guardado = "";
+    el.addEventListener("focus", () => {
+      guardado = el.value;
+      if (guardado) { el.value = ""; el.placeholder = guardado; }
+    });
+    el.addEventListener("keydown", (ev) => {
+      if (ev.key === "Backspace" || ev.key === "Delete") guardado = ""; // apagar de propósito
+    });
+    el.addEventListener("input", () => { guardado = ""; });
+    el.addEventListener("blur", () => {
+      if (!el.value && guardado) el.value = guardado;
+      guardado = "";
+      el.placeholder = dica;
+    });
+  }
+
   function iniciar() {
     const hoje = new Date();
     $("mes").value = `${hoje.getFullYear()}-${pad(hoje.getMonth() + 1)}`;
@@ -212,6 +232,8 @@
 
     $("lista-locais").innerHTML = LOCAIS.map((l) => `<option value="${esc(l.local)}">`).join("");
     atualizarSugestoes(false);
+    listaSempreVisivel($("nome"));
+    listaSempreVisivel($("local"));
     // Registrado antes do salvarForm/render para o nome já entrar na folha
     $("local").addEventListener("input", () => atualizarSugestoes(true));
     $("local").addEventListener("change", () => {

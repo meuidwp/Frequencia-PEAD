@@ -1,4 +1,4 @@
-const CACHE = "pead-frequencia-v4";
+const CACHE = "pead-frequencia-v5";
 const ARQUIVOS = [
   "./",
   "index.html",
