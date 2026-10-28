@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frequência PEAD</title>
+  <meta name="theme-color" content="#2f6fb5">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-bar no-print">
+    <h1>Frequência PEAD</h1>
+    <button id="btn-install" type="button" hidden>Instalar app</button>
+  </header>
+
+  <main class="layout">
+    <aside class="panel no-print">
+      <section>
+        <h2>Folha</h2>
+        <label>Mês inicial
+          <input type="month" id="mes">
+        </label>
+        <label>Quantidade de meses
+          <input type="number" id="qtd" min="1" max="12" value="1">
+        </label>
+        <label>Nome completo (opcional)
+          <input type="text" id="nome" autocomplete="name">
+        </label>
+        <label>Local de trabalho (opcional)
+          <input type="text" id="local">
+        </label>
+        <label class="check">
+          <input type="checkbox" id="pf-nacionais">
+          Marcar Carnaval e Corpus Christi como ponto facultativo
+        </label>
+        <button id="btn-imprimir" type="button" class="primary">Imprimir / salvar PDF</button>
+      </section>
+
+      <section>
+        <h2>Feriados e pontos facultativos</h2>
+        <form id="form-feriado">
+          <label>Data
+            <input type="date" id="f-data" required>
+          </label>
+          <label>Até (opcional, para vários dias)
+            <input type="date" id="f-fim">
+          </label>
+          <label>Tipo
+            <select id="f-tipo">
+              <option>Feriado</option>
+              <option>Ponto Facultativo</option>
+            </select>
+          </label>
+          <label>Descrição (opcional)
+            <input type="text" id="f-desc" placeholder="Ex.: Aniversário da cidade">
+          </label>
+          <label class="check">
+            <input type="checkbox" id="f-anual">
+            Repetir todos os anos (só para um dia)
+          </label>
+          <button type="submit">Adicionar</button>
+        </form>
+
+        <ul id="lista-feriados" class="lista"></ul>
+        <button id="btn-json" type="button" class="link">Copiar lista para holidays.json</button>
+        <p class="hint">Os feriados adicionados ficam salvos neste aparelho. Para valer para todos os usuários, cole a lista no arquivo <code>holidays.json</code> do repositório.</p>
+      </section>
+    </aside>
+
+    <section id="folhas" class="folhas" aria-live="polite"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

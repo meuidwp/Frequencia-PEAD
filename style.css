@@ -1,0 +1,75 @@
+:root {
+  --azul: #2f6fb5;
+  --verde: #8fc9b0;
+  --bg: #f2f4f7;
+  --borda: #c9ced6;
+  --txt: #1d2530;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--txt); background: var(--bg); }
+
+.app-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--azul); color: #fff; }
+.app-bar h1 { margin: 0; font-size: 1.15rem; }
+.app-bar button { background: #fff; color: var(--azul); border: 0; border-radius: 6px; padding: 8px 12px; font-weight: bold; cursor: pointer; }
+
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 16px; padding: 16px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+.panel { background: #fff; border: 1px solid var(--borda); border-radius: 10px; padding: 14px; }
+.panel h2 { font-size: 1rem; margin: 0 0 10px; }
+.panel section + section { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.panel label { display: block; font-size: .85rem; margin-bottom: 10px; }
+.panel input[type=text], .panel input[type=month], .panel input[type=date], .panel input[type=number], .panel select {
+  display: block; width: 100%; margin-top: 4px; padding: 8px; border: 1px solid var(--borda); border-radius: 6px; font-size: 1rem;
+}
+.panel label.check { display: flex; gap: 8px; align-items: flex-start; }
+.panel button { padding: 10px 14px; border-radius: 6px; border: 1px solid var(--azul); background: #fff; color: var(--azul); font-weight: bold; cursor: pointer; font-size: .95rem; }
+.panel button.primary { background: var(--azul); color: #fff; width: 100%; }
+.panel button.link { border: 0; background: none; padding: 6px 0; text-decoration: underline; }
+.hint { font-size: .78rem; color: #5b6573; }
+.lista { list-style: none; padding: 0; margin: 12px 0 4px; }
+.lista li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--borda); border-radius: 6px; margin-bottom: 6px; font-size: .85rem; }
+.lista li.fixo { background: #f6f8fa; color: #5b6573; }
+.lista button { padding: 2px 8px; border-color: #c0392b; color: #c0392b; }
+
+.folhas { display: flex; flex-direction: column; gap: 16px; align-items: center; min-width: 0; }
+
+/* ---------- Folha ---------- */
+.sheet { width: 100%; max-width: 190mm; background: #fff; padding: 12px; font-size: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+.cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--verde); padding: 4px 8px; }
+.cab img { height: 16mm; max-width: 40%; object-fit: contain; }
+.cab .txt { flex: 1; line-height: 1.2; }
+.cab .txt b { font-size: 1.25em; display: block; letter-spacing: .02em; }
+.cab .txt small { display: block; font-size: .7em; color: #333; }
+.cab .txt span { display: block; font-weight: bold; font-size: .85em; color: #1b6b3a; }
+.tit { text-align: center; margin: 8px 0; line-height: 1.35; }
+.tit .prog { font-weight: bold; font-size: 1.1em; }
+.tit .lei { font-style: italic; }
+.tit .sub { margin-top: 8px; }
+
+table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+td, th { border: 1px solid #000; padding: 0 4px; height: 22px; }
+th { font-size: 1.05em; }
+.info { margin-bottom: 10px; }
+.info th { height: 20px; }
+.info td { height: 20px; text-align: center; }
+.reg td.c { text-align: center; white-space: nowrap; }
+.reg td.blk { background: #a6a6a6; text-align: center; font-weight: bold; }
+
+.ass { display: flex; justify-content: space-between; margin: 26px 8px 4px; text-align: center; }
+.ass div { width: 38%; border-top: 1px solid #000; padding-top: 2px; }
+
+/* ---------- Impressão ---------- */
+@page { size: A4 portrait; margin: 10mm; }
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .folhas { display: block; }
+  .sheet { max-width: none; width: 190mm; padding: 0; box-shadow: none; font-size: 10pt; break-after: page; page-break-after: always; }
+  .sheet:last-child { break-after: auto; page-break-after: auto; }
+  td, th { height: 5.6mm; }
+  .info td, .info th { height: 6mm; }
+  .ass { margin-top: 9mm; }
+  .reg td.blk, .cab { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
