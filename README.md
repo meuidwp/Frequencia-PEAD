@@ -35,11 +35,12 @@ para o mês atual (ou qualquer mês/intervalo de meses), pronta para imprimir ou
 `anual: true` repete todo ano (apenas para um dia).
 O botão "Copiar lista para holidays.json" monta esse JSON para você.
 
-## Logos
+## Cabeçalho e rodapé
 
-Coloque `brasao.png` e `logo-sao-sebastiao.png` na pasta `assets/` (opcional).
+São as imagens originais do modelo, em `assets/cabecalho.png` e `assets/rodape.png`.
+Para trocar, substitua os arquivos mantendo os mesmos nomes.
 
 ## Atualizações
 
-Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v1` → `v2`)
+Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v2` → `v3`)
 para forçar a atualização nos aparelhos já instalados.

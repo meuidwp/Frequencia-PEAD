@@ -36,12 +36,8 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--txt); 
 
 /* ---------- Folha ---------- */
 .sheet { width: 100%; max-width: 190mm; background: #fff; padding: 12px; font-size: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
-.cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--verde); padding: 4px 8px; }
-.cab img { height: 16mm; max-width: 40%; object-fit: contain; }
-.cab .txt { flex: 1; line-height: 1.2; }
-.cab .txt b { font-size: 1.25em; display: block; letter-spacing: .02em; }
-.cab .txt small { display: block; font-size: .7em; color: #333; }
-.cab .txt span { display: block; font-weight: bold; font-size: .85em; color: #1b6b3a; }
+.cab-img { display: block; width: 100%; height: auto; }
+.rod { display: block; width: 100%; height: auto; margin-top: 6px; }
 .tit { text-align: center; margin: 8px 0; line-height: 1.35; }
 .tit .prog { font-weight: bold; font-size: 1.1em; }
 .tit .lei { font-style: italic; }
@@ -71,5 +67,5 @@ th { font-size: 1.05em; }
   td, th { height: 5.6mm; }
   .info td, .info th { height: 6mm; }
   .ass { margin-top: 9mm; }
-  .reg td.blk, .cab { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .reg td.blk, .cab-img, .rod { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

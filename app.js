@@ -101,15 +101,7 @@
 
     return `
 <article class="sheet">
-  <div class="cab">
-    <img src="assets/brasao.png" alt="" onerror="this.style.display='none'">
-    <div class="txt">
-      <b>PREFEITURA DE SÃO SEBASTIÃO</b>
-      <small>ESTÂNCIA BALNEÁRIA DO ESTADO DE SÃO PAULO</small>
-      <span>Secretaria de Desenvolvimento<br>Econômico e Social</span>
-    </div>
-    <img src="assets/logo-sao-sebastiao.png" alt="" onerror="this.style.display='none'">
-  </div>
+  <img class="cab-img" src="assets/cabecalho.png" alt="Prefeitura de São Sebastião - Secretaria de Desenvolvimento Econômico e Social">
 
   <div class="tit">
     <div class="prog">Programa Emergencial de Auxílio-Desemprego - PEAD</div>
@@ -130,6 +122,7 @@
   </table>
 
   <div class="ass"><div>Beneficiário</div><div>Chefia Imediata</div></div>
+  <img class="rod" src="assets/rodape.png" alt="">
 </article>`;
   }
 

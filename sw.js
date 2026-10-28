@@ -1,4 +1,4 @@
-const CACHE = "pead-frequencia-v1";
+const CACHE = "pead-frequencia-v2";
 const ARQUIVOS = [
   "./",
   "index.html",
@@ -7,7 +7,9 @@ const ARQUIVOS = [
   "holidays.json",
   "manifest.webmanifest",
   "icons/icon-192.png",
-  "icons/icon-512.png"
+  "icons/icon-512.png",
+  "assets/cabecalho.png",
+  "assets/rodape.png"
 ];
 
 self.addEventListener("install", (e) => {
