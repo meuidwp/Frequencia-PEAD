@@ -8,12 +8,23 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <script>
+    // Aplica o tema salvo (ou o do sistema) antes de desenhar a página, evitando "piscar"
+    try {
+      var t = localStorage.getItem("pead-tema");
+      if (!t && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      if (t) document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="app-bar no-print">
     <h1>Frequência PEAD</h1>
-    <button id="btn-install" type="button" hidden>Instalar app</button>
+    <div class="acoes">
+      <button id="btn-tema" type="button" aria-label="Alternar modo noturno">🌙 Escuro</button>
+      <button id="btn-install" type="button" hidden>Instalar app</button>
+    </div>
   </header>
 
   <main class="layout">

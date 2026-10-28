@@ -222,7 +222,22 @@
     });
   }
 
+  // Modo noturno: guarda a escolha; sem escolha, segue o tema do sistema
+  function aplicarTema(tema, salvar) {
+    document.documentElement.dataset.tema = tema;
+    const escuro = tema === "dark";
+    $("btn-tema").textContent = escuro ? "☀️ Claro" : "🌙 Escuro";
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", escuro ? "#1d3f66" : "#2f6fb5");
+    if (salvar) { try { localStorage.setItem("pead-tema", tema); } catch (e) {} }
+  }
+
   function iniciar() {
+    aplicarTema(document.documentElement.dataset.tema === "dark" ? "dark" : "light", false);
+    $("btn-tema").addEventListener("click", () => {
+      aplicarTema(document.documentElement.dataset.tema === "dark" ? "light" : "dark", true);
+    });
+
     const hoje = new Date();
     $("mes").value = `${hoje.getFullYear()}-${pad(hoje.getMonth() + 1)}`;
     $("nome").value = form.nome || "";

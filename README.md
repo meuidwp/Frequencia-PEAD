@@ -35,6 +35,11 @@ para o mês atual (ou qualquer mês/intervalo de meses), pronta para imprimir ou
 `anual: true` repete todo ano (apenas para um dia).
 O botão "Copiar lista para holidays.json" monta esse JSON para você.
 
+## Modo noturno
+
+O botão "🌙 Escuro / ☀️ Claro" no topo alterna o tema. Sem escolha, o app segue o tema do sistema;
+a escolha fica salva no aparelho. A folha de frequência continua branca (visualização e impressão).
+
 ## Locais de trabalho e nomes automáticos
 
 Os campos "Nome completo" e "Local de trabalho" aceitam digitação livre e mostram sugestões (a lista completa aparece sempre que você toca no campo, mesmo já preenchido).
@@ -49,5 +54,5 @@ Para trocar, substitua os arquivos mantendo os mesmos nomes.
 
 ## Atualizações
 
-Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v5` → `v6`)
+Ao mudar qualquer arquivo, altere o nome do cache em `sw.js` (`pead-frequencia-v6` → `v7`)
 para forçar a atualização nos aparelhos já instalados.
